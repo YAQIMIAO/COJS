@@ -1,0 +1,8 @@
+#! /bin/bash
+
+prog=g
+datapath='./data/secret'
+for file in ${datapath}/*.in; do
+	time ./${prog} < $file  > ./${prog}.out | head -n 1
+	cmp ${file/%in/ans} ${prog}.out;
+done
